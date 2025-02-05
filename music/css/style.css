@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url(../img/minion.jpg!d);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 100% 100%;
+  min-height: 100vh;
+}
+
+table,
+th,
+td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  padding: 4px;
+}
+
+table {
+  box-shadow: 0px 0px 12px 4px rgba(139, 128, 0, 0.74);
+}
+.tablebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 60%;
+  margin-top: 18%;
+  border-radius: 25px;
+  height: 340px;
+  width: 340px;
+  background-image: linear-gradient(yellow, darkgoldenrod);
+  box-shadow: 0px 0px 12px 4px rgba(255, 255, 0, 0.74);
+}
+
+@media (max-width: 855px) {
+  .tablebox {
+    margin: 0 auto;
+    margin-top: 18%;
+    background-color: yellow;
+    opacity: 0.8;
+    width: 360px;
+    height: 360px;
+  }
+  table {
+    width: 320px;
+    height: 320px;
+  }
+  body {
+    background-image: url(../img/lookup.jpg);
+    font-weight: bolder;
+    font-size: 14px;
+  }
+}
