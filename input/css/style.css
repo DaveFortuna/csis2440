@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: fixed;
+  background-image: url(../img/bean.jpg);
+  background-size: 100% 100%;
+}
+main {
+  border-radius: 10px;
+  /* margin: 0 auto; */
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form {
+  font-size: 32px;
+  color: palegreen;
+  height: 370px;
+  width: 315px;
+  padding: 35px;
+  border-radius: 10%;
+  box-shadow: 0px 0px 12px 4px rgba(137, 243, 54, 0.74);
+  background-image: linear-gradient(darkgreen, transparent);
+}
+.response {
+  font-size: 32px;
+  color: palegreen;
+  height: auto;
+  width: auto;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 12px 4px rgba(137, 243, 54, 0.74);
+  background-image: linear-gradient(darkgreen, transparent);
+}
+input {
+  font-size: 30px;
+}
+.button {
+  margin-left: 105px;
+  box-shadow: 0px 0px 12px 4px rgba(137, 243, 54, 0.74);
+  color: palegreen;
+  background: transparent;
+  padding: 4px;
+  border-radius: 5px;
+}
+.button:hover {
+  background-color: rgba(137, 243, 54);
+  background: rgba(137, 243, 54);
+  color: black;
+}
+.response {
+  border: solid orange 3px;
+}
