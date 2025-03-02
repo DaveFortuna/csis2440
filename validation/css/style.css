@@ -1,0 +1,63 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-image: url("../img/red.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.main {
+  font-size: 26px;
+  font-weight: bold;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.5);
+
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.5);
+  width: 580px;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+.submission {
+  font-size: 26px;
+  font-weight: bold;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.5);
+
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.5);
+  width: 650px;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+input,
+.input {
+  border: solid black 1px;
+  width: fit-content;
+  height: fit-content;
+  margin: 0 auto;
+  font-size: 24px;
+  background-color: orange;
+}
+.buttons,
+.er1,
+.er2,
+.label {
+  width: fit-content;
+  margin: 0 auto;
+}
+.button {
+  background-color: orange;
+  border-radius: 10px;
+  padding: 5px;
+}
+.button:hover {
+  background-color: chartreuse;
+}
+input:focus {
+  background-color: chartreuse;
+}
