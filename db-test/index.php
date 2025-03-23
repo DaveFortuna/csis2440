@@ -28,8 +28,8 @@
 	$conn = mysqli_connect(HOST,USER,PASS,DB);
 	
 	//WRITE A DB QUERY
-  if ($_SERVER['HTTP_HOST'] == 'localhost')$sql = 'SELECT * FROM palindrome;';
-  else $sql = 'SELECT * FROM palindromes.palindrome;';
+  $sql = 'SELECT * FROM palindrome;';
+
 	
 	//RUN DB QUERY 
 	$results = mysqli_query($conn, $sql);
