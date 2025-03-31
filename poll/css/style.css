@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  font-family: Merriweather;
+  background-image: url(../img/multiverse.jpg);
+}
+.title {
+  height: 50px;
+  padding: 10px;
+  text-align: center;
+}
+h1 {
+  background: rgba(80, 80, 128, 0.8);
+  box-shadow: 4px 4px 12px 8px rgba(128, 128, 128, 0.74);
+  border-radius: 10px;
+}
+.poll {
+  display: grid;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 28px;
+  width: 670px;
+  height: 650px;
+  background: rgba(168, 168, 168, 0.8);
+  box-shadow: 4px 4px 12px 8px rgba(128, 128, 128, 0.74);
+}
+form {
+  display: grid;
+  gap: 10px;
+  place-self: center;
+  font-size: 28px;
+  background: rgba(80, 80, 128, 0.8);
+  border: solid 4px rgba(80, 80, 128, 0.8);
+  border-radius: 8px;
+}
+.radio {
+  box-sizing: border-box;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  height: 25px;
+  width: 25px;
+}
+label {
+  padding: 5px;
+}
+.submitbox {
+  place-self: center;
+}
+.submit {
+  padding: 5px;
+  font-size: 22px;
+  font-family: Merriweather;
+  border-radius: 5px;
+}
+.submit:hover {
+  background-color: orange;
+}
+.graph {
+  padding: 4px;
+  margin-bottom: 20px;
+  display: grid;
+  gap: 6px;
+  height: 20px;
+  background-color: blueviolet;
+  border: solid blueviolet 1px;
+  border-radius: 3px;
+}
+.results {
+  display: grid;
+  justify-content: center;
+  background: rgba(80, 80, 128, 0.8);
+  box-shadow: 4px 4px 12px 8px rgba(128, 128, 128, 0.74);
+  border-radius: 8px;
+}
