@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  /* background-image: url(../img/lock.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  overflow-y: hidden;
+  font-family: "Inter";
+  font-size: 24px;
+}
+
+.main {
+  display: grid;
+  grid-template-rows: 80px 220px;
+  gap: 20px;
+  justify-content: center;
+  border: solid gray 10px;
+  margin: 0 auto;
+  text-align: center;
+  width: 630px;
+  height: 400px;
+  margin-top: 300px;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.5);
+  font-size: 24px;
+}
+form {
+  display: grid;
+  text-align: center;
+  width: 300px;
+  margin: 0 auto;
+  font-size: 24px;
+}
+p {
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: 40px;
+}
+p.padded {
+  padding-bottom: 8px;
+}
+.button {
+  width: 130px;
+  font-size: 24px;
+}
+#submit {
+  margin-right: 40px;
+}
+input {
+  font-size: 24px;
+  width: 300px;
+  height: 35px;
+  border-radius: 6px;
+  margin-top: 3px;
+}
+#uname,
+#pword {
+  text-indent: 5px;
+}
+.click {
+  height: 80px;
+  width: 530px;
+  margin: 0 auto;
+}
+h1 {
+  padding-top: 5px;
+}
+button {
+  font-size: 50px;
+  width: 230px;
+  height: 80px;
+  border-radius: 20px;
+  margin-left: 20px;
+}
+button:hover {
+  background-color: chocolate;
+}
+.button:hover {
+  background-color: chocolate;
+}
+.fbi {
+  transition: ease-in;
+  font-size: 24px;
+}
+table,
+th,
+td {
+  margin: 0 auto;
+  padding: 5px;
+}
+th,
+td {
+  padding-right: 80px;
+  padding-left: 80px;
+}
+tr:nth-child(even) {
+  background-color: rgb(192, 192, 192);
+}
