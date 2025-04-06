@@ -3,7 +3,7 @@
   ini_set( 'display_errors', 1 );
 
   function printLogin() {
-    echo '<div class="main">';
+    echo '<div class="main" class="main" style="background-color: rgb(22,150,220, 0.8);">';
     echo '<p>Welcome</p>';
     echo '<form method="post">';
     echo '<div>';
@@ -38,7 +38,7 @@
   }
 
   function printInvalidLogin() {
-    echo '<div class="main"style="background-color: rgba(22, 150, 220, 0.8);">';
+    echo '<div class="main" style="background-color: rgb(22,150,220, 0.8);">';
     echo '<p>Access Denied</p>';
     echo '<form method="post">';
     echo '<div>';
@@ -73,7 +73,7 @@
     $contents = fread($stream, filesize('includes/fbi.txt'));
     $pairs = explode('||>><<||', $contents);
     
-    $table = '<div class="main"style="background-color: rgb(50,205,50, 0.8);">';
+    $table = '<div class="main" style="background-color: rgb(50,205,50, 0.8);">';
     $table .= '<p>Access Granted</p>';
     $table .= '<div id="table">';
     $table .= '<table class="fbi">';
