@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  overflow-y: hidden;
+  font-family: "Inter";
+  font-size: 24px;
+}
+.userpic {
+  width: 400px;
+  height: 400px;
+  border-radius: 20px;
+}
+.nav > ul > li > a.active {
+  background-color: white;
+  border-radius: 8px;
+  color: blue;
+}
+.nav > ul > li > a:hover:not(.active) {
+  transform: scale(1.15);
+}
+.nav {
+  display: grid;
+  justify-content: center;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  border-radius: 10px;
+}
+li:hover {
+  background-color: cadetblue;
+}
+ul li {
+  display: inline-block;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 22px;
+  text-decoration: none;
+  transition: transform 500ms;
+}
+.userinfo {
+  margin-top: 150px;
+  text-align: center;
+}
+.mv {
+  margin-top: 150px;
+  display: grid;
+  justify-content: center;
+}
+.background {
+  background-image: url(../img/stone.jpg);
+}
+
+.main {
+  display: grid;
+  /* grid-template-rows: 80px 220px; */
+  gap: 15px;
+  justify-content: center;
+  border: solid gray 10px;
+  margin: 0 auto;
+  text-align: center;
+  width: 630px;
+  height: 480px;
+  margin-top: 200px;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.5);
+  font-size: 24px;
+}
+.users {
+  background-color: white;
+  overflow-x: scroll;
+  justify-content: flex-start;
+  text-align: left;
+  grid-template-rows: auto;
+}
+.message {
+  font-size: 28px;
+}
+form {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bolder;
+  display: grid;
+  text-align: center;
+  width: 300px;
+  margin: 0 auto;
+  font-size: 24px;
+  gap: 15px;
+}
+p {
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: 40px;
+}
+p.padded {
+  padding-bottom: 8px;
+}
+.button {
+  width: 130px;
+  font-size: 24px;
+}
+#submit {
+  margin-right: 30px;
+}
+#login {
+  grid-column: 1 / 2;
+  margin: 0 auto;
+  justify-self: center;
+}
+input {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 24px;
+  width: 300px;
+  height: 35px;
+  border-radius: 6px;
+  margin-top: 3px;
+  text-indent: 3px;
+}
+#uname,
+#pword {
+  text-indent: 5px;
+}
+.click {
+  height: 80px;
+  width: 530px;
+  margin: 0 auto;
+}
+h1 {
+  padding-top: 5px;
+}
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+button {
+  font-size: 50px;
+  width: 230px;
+  height: 80px;
+  border-radius: 20px;
+  margin-left: 20px;
+}
+.button2 {
+  margin: 0 auto;
+}
+button:hover {
+  background-color: chocolate;
+}
+.button:hover {
+  background-color: chocolate;
+}
+.fbi {
+  transition: ease-in;
+  font-size: 24px;
+}
+table,
+th,
+td {
+  margin: 0 auto;
+  padding: 5px;
+}
+th,
+td {
+  padding-right: 80px;
+  padding-left: 80px;
+}
+tr:nth-child(even) {
+  background-color: rgb(192, 192, 192);
+}
