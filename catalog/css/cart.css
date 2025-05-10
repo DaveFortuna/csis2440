@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: grid;
+  grid-template-rows: 85px 100px 1fr;
+  grid-template-columns: 2fr 1fr;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  background-image: url(../img/balloon.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 100% 100%;
+  min-height: 100vh;
+}
+.nav,
+.headline {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.headline {
+  justify-content: center;
+  text-align: center;
+  font-size: 48px;
+  text-shadow: 4px 4px #e4003a;
+  color: #e09d00;
+}
+
+.cart {
+  background-color: #e4003a;
+  margin: 50px 0 0 30px;
+  border: solid #e09d00 2px;
+  border-radius: 10px;
+  box-shadow: 0 0 25px #e4003a;
+  display: grid;
+  width: 90%;
+  padding: 10px;
+  height: fit-content;
+}
+.cart-item {
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  padding: 8px;
+  height: 150px;
+  background: #e09d00;
+}
+.cart h2 {
+  width: 30%;
+}
+.cart img {
+  border: solid green 1px;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.cart-item p,
+.cart-item input {
+  font-size: 22px;
+  margin: 85px 10px 0 0;
+  padding: 5px;
+}
+.side-bar {
+  border-radius: 10px;
+  font-size: 22px;
+  margin-top: 50px;
+  padding: 12px;
+  width: 300px;
+  height: fit-content;
+  background-color: #e4003a;
+  border: solid 2px #e09d00;
+  box-shadow: 0 0 20px #e4003a;
+}
+.shipping {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #e09d00;
+  border: solid 2px #e09d00;
+}
+.totals {
+  margin-top: 20px;
+  padding: 7px;
+  border-radius: 10px;
+  background-color: #e09d00;
+  border: solid 2px #e09d00;
+}
+.cost span {
+  color: blue;
+  margin-left: 25px;
+}
+.tax span {
+  color: blue;
+  margin-left: 64px;
+}
+.discount span {
+  color: blue;
+  margin-left: 34px;
+}
+.total span {
+  color: blue;
+  margin-left: 42px;
+}
+.totals button {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 22px;
+  background-color: #e4003a;
+  color: #fff;
+  padding: 10px 22px;
+  margin-top: 20px;
+  margin-left: 65px;
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.totals button:hover {
+  background-color: rgb(247, 0, 63);
+  color: #fff;
+  transform: scale(1.05);
+}

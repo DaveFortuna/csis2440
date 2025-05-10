@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url(../img/acmesales.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+div > h1 {
+  border-radius: 20px;
+  text-align: center;
+  width: 600px;
+  font-size: 70px;
+  text-decoration: underline;
+  margin: 40px auto 20px auto;
+  text-shadow: 4px 4px #e4003a;
+  color: #ffb200;
+  background: radial-gradient(circle, #e4003a 0%, #b59410 100%);
+  box-shadow: 4px 4px 12px 8px rgba(255, 174, 66, 0.74);
+}
+.productholder {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.product {
+  width: 350px;
+  height: 530px;
+  background-color: #ffb200;
+  border: 4px solid #e4003a;
+  margin: 30px auto 10px auto;
+  border-radius: 30px;
+  padding: 10px;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+}
+.headline {
+  padding: 5px;
+}
+.stars {
+  font-size: 24px;
+  color: maroon;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.star {
+  font-family: Arial, sans-serif;
+}
+
+.star.empty {
+  color: #ccc;
+}
+
+.rating-number {
+  font-size: 18px;
+  margin-left: 8px;
+  color: #e4003a;
+}
+.description {
+  border: 2px solid #e4003a;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  box-shadow: 5px 5px 5px 5px darkgoldenrod;
+}
+
+.product img {
+  width: 50%;
+  height: 40%;
+  border-radius: 20px;
+  border: 3px solid #000;
+  box-shadow: 4px 4px 0 #e4003a;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.button-link {
+  display: inline-block;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 24px;
+  background-color: #e4003a;
+  color: #fff;
+  margin-top: 3px;
+  padding: 10px 23px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 4px 4px 0 #000;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-link:hover {
+  background-color: #ffcc00;
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* .buy {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 16px;
+  background-color: #e4003a;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 0 #000;
+  cursor: pointer;
+}
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.buy:hover {
+  animation: pop 0.5s ease;
+} */
