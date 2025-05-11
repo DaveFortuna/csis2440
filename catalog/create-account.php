@@ -12,9 +12,10 @@
 <head>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/nav.css">
+  <script src="js/script.js" defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Create Account</title>
 </head>
 
 <body>
@@ -35,6 +36,11 @@ if (empty($_POST))
       echo '<a style="color: hotpink;" href="index.php">Back to Login</a>';
     }
   ?>
+  <div class="errorfield">
+    <p id="errorfield"></p>
+    <p id="errorfield2"></p>
+    <p id="errorfield3"></p>
+  </div>
 
 </body>
 

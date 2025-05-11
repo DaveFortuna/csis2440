@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url(../img/bugs.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  min-height: 100vh;
+}
+.order-num {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 5px;
+  padding: 10px;
+  width: fit-content;
+  border: solid #e4003a 3px;
+  box-shadow: -2px -2px 0 #e4003a;
+  border-radius: 20px;
+  background-color: #e09d00;
+}
+.thank-you {
+  justify-content: center;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 22px;
+  margin: 20px auto 0px auto;
+  width: 900px;
+  padding: 10px;
+  text-align: center;
+  border: dashed #e4003a 4px;
+  box-shadow: 2px 2px 0 #000;
+  background-color: #e09d00;
+  border-radius: 10px;
+}
+.out-total {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 24px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  width: fit-content;
+  border: dashed red 3px;
+  border-radius: 20px;
+  background-color: #e09d00;
+  margin: 5px auto;
+  padding: 10px;
+}
+.cart {
+  background-color: #e4003a;
+  margin: 50px auto 0 auto;
+  border: solid #e09d00 2px;
+  border-radius: 10px;
+  box-shadow: 0 0 25px #e4003a;
+  display: grid;
+  width: 700px;
+  padding: 10px;
+  margin-bottom: 20px;
+  height: fit-content;
+  align-items: center;
+}
+.cart-item {
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 8px;
+  height: 130px;
+  background: #e09d00;
+  align-items: center;
+}
+.cart-item label,
+.cart-item p {
+  font-size: 24px;
+  text-decoration: underline;
+  text-align: center;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.cart h2 {
+  text-decoration: underline;
+  text-align: center;
+}
+.cart img {
+  width: 100px;
+  height: 100px;
+  border: solid green 1px;
+  margin: 0 auto;
+  border-radius: 5px;
+}

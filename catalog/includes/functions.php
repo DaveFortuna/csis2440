@@ -26,14 +26,14 @@ function newUser()
 {
   $nu = '';
   $nu .= '<div class="homebox">';
-  $nu .= '<form class="loginform" method="POST">';
+  $nu .= '<form class="loginform" id="createuser" method="POST">';
   $nu .= '<label for="createusername">Username:</label>';
   $nu .= '<input name="createusername" id="createusername" type="text">';
   $nu .= '<label for="createpassword">Password:</label>';
   $nu .= '<input name="createpassword" id="createpassword" type="password">';
   $nu .= '<label for="createpassword">Verify Password:</label>';
   $nu .= '<input name="createpassword2" id="createpassword2" type="password">';
-  $nu .= '<input type="submit" name="newuser" value="Create Account">';
+  $nu .= '<input id="submit" type="submit" name="newuser" value="Create Account" disabled>';
   $nu .= '<input class="reset" type="reset">';
   $nu .= '</form>';
   $nu .= '</div>';
@@ -95,29 +95,37 @@ function productCard()
 function printProduct($id) {
   $productInfo = getProductFromDB($id);
 
-    $product = '<div class="product-page">';
-    $product .= '<h1>'.$productInfo['name'].'</h1>';
-    $product .= '<div class="product-box">';
-    $product .= '<div class="product-image">';
-    $product .= '<img src="'.$productInfo['image'].'" alt="ACME Product">';
-    $product .= '</div>';
-    $product .= '<div class="product-info">';
-    $product .= '<p class="description">'.$productInfo['description'].'</p>';
-    $product .= '<p class="product-rating">'.starRating().'</p>';
-    $product .= '<p class="review">'.$productInfo['review'].'</p>';
-    $product .= '<p class="quantity"><strong>In Stock: </strong>'; 
-    $product .= randomNum().' units</p>';
-    $product .= '<p class="price"><strong>Price:</strong>'.$productInfo['price'].'</p>';
-    $product .= '<form method="POST">';
-    $product .= '<label for="quantity">Qty:</label>';
-    $product .= '<input name="quantity" id="quantity" type="number" min="1"'; $product .= 'max="10">';
-    $product .= '<input name="purchase" type="submit" value="Purchase">';
-    $product .= '</form>';
-    $product .= '</div>';
-    $product .= '</div>'; 
-    $product .= '</div>'; 
+  $product = '<div class="product-page">';
+  $product .= '<h1>'.$productInfo['name'].'</h1>';
+  $product .= '<div class="product-box">';
+  $product .= '<div class="product-image">';
+  $product .= '<img src="'.$productInfo['image'].'" alt="ACME Product">';
+  $product .= '</div>';
+  $product .= '<div class="product-info">';
+  $product .= '<p class="description">'.$productInfo['description'].'</p>';
+  $product .= '<p class="review">'.$productInfo['review'].'</p>';
+  $product .= '<p class="product-rating">'.starRating().'</p>';
+  $product .= '<p class="quantity"><strong>In Stock: </strong>'; 
+  $product .= randomNum().' units</p>';
+  $product .= '<p class="price"><strong>Price:</strong>';
+  $product .= ''.$productInfo['price'].'</p>';
+  $product .= '<form method="POST">';
+  $product .= '<input type="hidden" value="'.$_GET['id'].'">';
+  if (isGranted()) {$product .= '<label for="quantity">Qty:</label>';
+  $product .= '<input name="qty" id="qty" type="number" min="1"'; 
+  $product .= 'max="500">';
+  $product .= '<input onclick="'.addToCart().'" name="add-to-cart"';
+  $product .= 'type="submit" value="Add to Cart"></form>';} 
+  $product .= '</div>';
+  if (!isGranted()){$product .= '<div class="sign-in"><p>Please sign in or'; $product .= 'make an account with us to make a purchase.</div>';
+  $product .= '<div class="nonuser-button"><a class="button-link"'; 
+  $product .= 'href="index.php">Login Page</a>';
+  $product .= '<div class="create-acc"><a class="button-link"';
+  $product .= 'href="create-account.php">Create Account</a></div></div>';} 
+  $product .= '</div>'; 
+  $product .= '</div>';  
   
-    return $product;
+  return $product;
 }
 function itemsSold()
   {
@@ -126,68 +134,204 @@ function itemsSold()
 }
 function randomNum()
   {
-    $num = rand(10,50);
+    $num = rand(10,999);
     return $num;
 }
 function starRating() {
-    $rating = rand(5, 10) / 2;
+    $rating = rand(1, 5);
     $fullStars = floor($rating);
     $emptyStars = 5 - $fullStars;
     $stars = '<div class="stars">';
     for ($i = 0; $i < $fullStars; $i++) $stars .= '<span class="star full">★</span>';   
 
-    for ($i = 0; $i < $emptyStars; $i++) $stars .= '<span class="star empty">★</span>'; 
+    for ($i = 0; $i < $emptyStars; $i++) $stars .= '<span class="star empty">☆</span>'; 
     
     $stars .= "<span class='rating-number'>($rating)</span>";
     $stars .= '</div>';
 
     return $stars;
 }
-function printCartItem()
+function printCartItem($x)
 {
-$item = '<div class="cart">';
-
-$item .= '<div class="cart-item">';
-$item .= '<h2>Female Roadrunner Costume</h2>';
-$item .= '<img src="img/7.jpg" />';
-$item .= '<p>Price:$100</p>';
-$item .= '<form action="POST">';
-$item .= '<label for="qty">Item qty: </label>';
-$item .= '<input name="qty" id="qty" type="number" min="0" max="100" />';
-$item .= '</form>';
+$item = '<div class="cart-item">';
+$item .= '<h2>'.$_SESSION['product-name'][$x].'</h2>';
+$item .= '<img src="img/'.$_SESSION['product-id'][$x].'.jpg" />';
+$item .= '<p>Price:<br>$'.$_SESSION['price'][$x].'</p>';
+$item .= '<label for="qty-'.$x.'">Qty:<br>'.$_SESSION['qty'][$x].' </label>';
+$item .= '<input name="qty-'.$x.'" id="qty-'.$x.'" type="number" min="0" max="500">';
 $item .= '</div>';
 
-$item .= '<div class="cart-item">';
-$item .= '<h2>Cork</h2>';
-$item .= '<img src="img/7.jpg" />';
-$item .= '<p>Price:$100</p>';
-$item .= '<form action="POST">';
-$item .= '<label for="qty">Item qty: </label>';
-$item .= '<input name="qty" id="qty" type="number" min="0" max="100" />';
-$item .= '</form>';
-$item .= '</div>';
+return $item;
 
+}
 
+function printSideBar()
+{
 
+$sideBar = '<div class="side-bar">';
+$sideBar .= '<div class="shipping">';
+$sideBar .= '<p>';
+$sideBar .= 'ACME Shipping is powered by hot air balloon, rocket ';
+$sideBar .= 'sled, and occasionally a confused carrier pigeon. We ';
+$sideBar .= 'guarantee your order will arrive dramatically, ';
+$sideBar .= 'if not predictably.';
+$sideBar .= '</p>';
+$sideBar .= '</div>';
+$sideBar .= '<div class="totals">';
 
-$item .= '</div>';
+$sideBar .= '<div class="totals-columns">';
+$sideBar .= '<div class="left">';
+$sideBar .= '<p class="cost">Shipping:</p>';
+$sideBar .= '<p class="tax">Tax:</p>';
+$sideBar .= '<p class="discount">Discount:</p>';
+$sideBar .= '<p class="total">Grand Total:</p>';
+$sideBar .= '</div>';
 
-$item .= '<div class="side-bar">';
-$item .= '<div class="shipping">';
-$item .= '<p>';
-$item .= 'ACME Shipping is powered by hot air balloon, rocket ';
-$item .= 'sled, and occasionally a confused carrier pigeon. We ';
-$item .= 'guarantee your order will arrive dramatically, ';
-$item .= 'if not predictably.';
-$item .= '</p>';
-$item .= '</div>';
-$item .= '<div class="totals">';
-$item .= '<p class="cost">Shipping Cost: <span>$100.99</span</p>';
-$item .= '<p class="tax">Total Tax: <span>$100.99</span</p>';
-$item .= '<p class="discount">Member Discount: <span>10%</span</p>';
-$item .= '<p class="total">Grand Total: <span>$100.99</span</p>';
-$item .= '<button>Checkout</button>';
+$sideBar .= '<div class="right">';
+$sideBar .= '<p class="blue">$'.number_format(calcShipping(),2).'</p>';
+$sideBar .= '<p class="blue">$'.number_format(calcTax(),2).'</p>';
+$sideBar .= '<p class="blue">-$'.number_format(calcDiscount(),2).'</p>';
+$sideBar .= '<p class="blue">$'.number_format(grandTotal(),2).'</p>';
+$sideBar .= '</div>';
+$sideBar .= '</div>';
+
+$sideBar .= '<br>';
+$sideBar .= '<a class="button-link" href="checkout.php">Checkout</a>';
+$sideBar .= '</div>';
+return $sideBar;
+}
+function printEmptyCart()
+{
+$empty = '<div class="emptycart">';
+$empty .= '<h1>Your Cart is Empty</h1>';
+$empty .= '<p>';
+$empty .= 'Looks like you haven’t added anything yet — not even a ';
+$empty .= 'single anvil! Head back to the <a href="catalog.php">';
+$empty .= 'Product Page</a> and load up before Wile E. ';
+$empty .= 'beats you to it!</p>';
+$empty .= '</div>';
+return $empty;
+}
+function printSuggestion()
+{
+  $suggestion = '<div class="product-suggestion">';
+  $suggestion .= '<label for="suggestion">Can\'t find the kaboom you’re ';
+  $suggestion .= 'looking for? Let us know what outrageous ACME contraption ';
+  $suggestion .= 'we should cook up next:</label><textarea id="suggestion" ';
+  $suggestion .= 'name="suggestion" rows="4" cols="45"placeholder="Think ';$suggestion .= 'bigger! ';
+  $suggestion .= 'Rocket-powered slingshot? Self-filling pie cannon? ';
+  $suggestion .=  'Lay it on us!"></textarea>';
+  $suggestion .= '<button onclick="clearSuggestion()" class="suggest-submit">Submit Suggestion</button>';
+  $suggestion .= '</div>';
+  return $suggestion;
+}
+function addToCart()
+{
+if (isset($_POST['add-to-cart']))
+{
+  $productInfo = getProductFromDB($_GET['id']);
+  if (!isset($_SESSION['product-id']))
+  {
+    
+    $_SESSION['product-id'] = array();
+    $_SESSION['qty'] = array();
+    $_SESSION['product-name'] = array();
+    $_SESSION['price'] = array();
+    
+  }
+  
+    $hit = false;
+    for ($i = 0; $i < sizeof($_SESSION['product-id']); $i++)
+    {
+      if ($_SESSION['product-id'][$i] == $productInfo['id'])
+      {
+        $_SESSION['qty'][$i] += $_POST['qty'];
+        $hit = true;
+        break;
+      }
+    }
+    if (!$hit){
+      array_push($_SESSION['product-id'], $productInfo['id']);
+      array_push($_SESSION['qty'], $_POST['qty']);
+      array_push($_SESSION['product-name'], $productInfo['name']);
+      array_push($_SESSION['price'], $productInfo['price']);}
+  
+}
+}
+function calcShipping()
+{
+  $subTotal = 0;
+  for ($x = 0; $x < sizeof($_SESSION['qty']); $x++)
+  {
+    $subTotal += intval($_SESSION['qty'][$x]) * floatval($_SESSION['price'][$x]);
+  }
+  return $subTotal * .03;
+}
+function calcTax()
+{
+  $subTotal = 0;
+  for ($x = 0; $x < sizeof($_SESSION['qty']); $x++)
+  {
+    $subTotal += intval($_SESSION['qty'][$x]) * floatval($_SESSION['price'][$x]);
+  }
+  return $subTotal * .06;
+}
+function calcDiscount()
+{
+  $subTotal = 0;
+  for ($x = 0; $x < sizeof($_SESSION['qty']); $x++)
+  {
+    $subTotal += intval($_SESSION['qty'][$x]) * floatval($_SESSION['price'][$x]);
+  }
+  return $subTotal * .1;
+} 
+function grandTotal()
+{
+  $subTotal = 0;
+  for ($x = 0; $x < sizeof($_SESSION['qty']); $x++)
+  {
+    $subTotal += intval($_SESSION['qty'][$x]) * floatval($_SESSION['price'][$x]);
+  }
+  return $subTotal + calcShipping() + calcTax() - calcDiscount();
+}
+function printCheckoutItem($x)
+{
+
+$item = '<div class="cart-item">';
+$item .= '<h2>'.$_SESSION['product-name'][$x].'</h2>';
+$item .= '<img src="img/'.$_SESSION['product-id'][$x].'.jpg" />';
+$item .= '<p>Price:<br>$'.$_SESSION['price'][$x].'</p>';
+$item .= '<p>Qty:<br>'.$_SESSION['qty'][$x].' </p>';
 $item .= '</div>';
 return $item;
 }
+function checkout($x){
+  $checkout = '<div class="order-num"><p>Order#: '.randomNum().'</p>'; 
+  $checkout .= '</div>';
+  $checkout .= '<div class="thank-you">';
+  $checkout .= '<p>Thank you '.$_SESSION['username'].' for placing an '; 
+  $checkout .= 'order with the ACME store!</p>';
+  $checkout .= '<p>It’s officially in the hands of our highly trained ';
+  $checkout .= '(and slightly explosive) delivery team, guaranteed ';
+  $checkout .= 'to arrive with flair, fanfare, and ';
+  $checkout .= 'maybe a puff of smoke!</p>';
+  $checkout .= '</div>';
+  $checkout .= '<div class="cart">';
+  
+  for ( $x = 0; $x < sizeof($_SESSION['product-id']); $x++)
+      {
+        $checkout .= '<p>'.printCheckoutItem($x).'</p>';
+      }
+      
+  $checkout .= '</div>';
+  $checkout .= '<div class="out-total">';
+  $checkout .= '<p>Order total:$'.number_format(grandTotal(),2).'</p>';
+  $checkout .= '</div>';
+  
+  unset($_SESSION['product-id']);
+  unset($_SESSION['qty']);
+  unset($_SESSION['product-name']);
+  unset($_SESSION['price']);
+  return $checkout;
+    }
 ?>

@@ -68,6 +68,13 @@ h1.invalid {
   color: #000;
   transform: scale(1.1);
 }
+.errorfield {
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 24px;
+  background-color: #000;
+}
 
 .homebox {
   max-width: 500px;
@@ -124,6 +131,12 @@ h1.invalid {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
+.loginform input[type="submit"]:disabled {
+  background-color: grey;
+}
+.loginform input[type="submit"]:hover:disabled {
+  background-color: grey;
+}
 
 .loginform input[type="submit"]:hover,
 .loginform input[type="reset"]:hover {
@@ -138,6 +151,7 @@ h1.invalid {
   display: inline-block;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 24px;
+  height: fit-content;
   background-color: #e4003a;
   color: #fff;
   padding: 12px 25px;
