@@ -124,7 +124,7 @@ function printProduct($id) {
   $product .= '<input onclick="'.addToCart().'" name="add-to-cart"';
   $product .= 'type="submit" id="add" value="Add to Cart"></form>';} 
   $product .= '</div>';
-  if (!isGranted()){$product .= '<div class="sign-in"><p>Please sign in or'; $product .= 'make an account with us to make a purchase.</div>';
+  if (!isGranted()){$product .= '<div class="sign-in"><p>Please sign in or '; $product .= 'make an account with us to make a purchase.</div>';
   $product .= '<div class="nonuser-button"><a class="button-link"'; 
   $product .= 'href="index.php?id='.$_GET['id'].'">Login Page</a>';
   $product .= '<div class="create-acc"><a class="button-link"';
