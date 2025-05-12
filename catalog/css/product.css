@@ -1,5 +1,5 @@
 .product-box {
-  display: flex;
+  display: grid;
   width: 80%;
   margin: 0 auto;
   background: #ffb200;
@@ -74,15 +74,22 @@ form {
   font-size: 26px;
   font-weight: bold;
   border: solid purple 1px;
-  width: 500px;
+  width: 300px;
+  margin: 0 auto;
+  height: fit-content;
   box-shadow: 4px 4px 0 #000;
   border-radius: 10px;
 }
 .nonuser-button {
+  margin: 0 auto;
   width: 500px;
   display: flex;
   justify-content: center;
 }
 .create-acc {
   margin-left: 50px;
+}
+.added {
+  width: fit-content;
+  height: fit-content;
 }

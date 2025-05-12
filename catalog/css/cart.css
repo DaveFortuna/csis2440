@@ -50,6 +50,7 @@ body {
 .cart-item {
   border-radius: 10px;
   display: grid;
+  width: 98%;
   grid-template-columns: 1.5fr 1fr 1fr 1fr 100px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -160,7 +161,6 @@ body {
   transform: scale(1.1);
 }
 .update {
-  margin: 20px 0 15px 600px;
   display: inline-block;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 24px;

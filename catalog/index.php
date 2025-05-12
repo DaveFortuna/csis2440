@@ -3,6 +3,8 @@
  include_once ('includes/functions.php');
  include_once('includes/db.php');
  if (isset($_POST['submit'])) isLoginValid();
+ if (isGranted() && isset($_POST['productID']))
+ header("Location: product.php?id=".$_POST['productID']);
 
  error_reporting(-1);
  ini_set( 'display_errors', 1 );
@@ -21,9 +23,9 @@
 <body>
   <?php
   echo NavBar();
-  if (isGranted()) LoggedIn();
-  else if (empty($_POST)) LoginWForm();
-  else {LoginWForm(); echo '<h1 class="invalid">Invalid login. Try again.</h1>';
+  if (isGranted()) loggedIn();
+  else if (empty($_POST)) loginWForm();
+  else {loginWForm(); echo '<h1 class="invalid">Invalid login. Try again.</h1>';
   }
   ?>
 

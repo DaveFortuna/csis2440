@@ -18,7 +18,10 @@ return $nav;
 function createAccount()
 {
   $ca = '<div class="createAccount">';
-  $ca .= '<a href="create-account.php" class="button-link">Create Account</a>';
+  $ca .= '<a href="create-account.php';
+  if (isset($_GET['id'])) 
+    $ca .= '?id='.$_GET['id'].'';
+  $ca .= '" class="button-link">Create Account</a>';
   $ca .= '</div>';
   return $ca;
 }
@@ -27,6 +30,8 @@ function newUser()
   $nu = '';
   $nu .= '<div class="homebox">';
   $nu .= '<form class="loginform" id="createuser" method="POST">';
+  if (isset($_GET['id'])) 
+  $nu .='<input type="hidden" name="productID" value="'.$_GET['id'].'">';
   $nu .= '<label for="createusername">Username:</label>';
   $nu .= '<input name="createusername" id="createusername" type="text">';
   $nu .= '<label for="createpassword">Password:</label>';
@@ -43,6 +48,8 @@ function login()
 {
 $lf = '<div class="loginform">';
   $lf .= '<form method="POST">';
+  if (isset($_GET['id'])) 
+  $lf .= '<input type="hidden" name="productID" value="'.$_GET['id'].'">';
     $lf .= '<label for="username">Username:</label>';
     $lf .= '<input name="username" id="username" type="text" required>';
     $lf .= '<label for="password">Password:</label>';
@@ -115,17 +122,22 @@ function printProduct($id) {
   $product .= '<input name="qty" id="qty" type="number" min="1"'; 
   $product .= 'max="500">';
   $product .= '<input onclick="'.addToCart().'" name="add-to-cart"';
-  $product .= 'type="submit" value="Add to Cart"></form>';} 
+  $product .= 'type="submit" id="add" value="Add to Cart"></form>';} 
   $product .= '</div>';
   if (!isGranted()){$product .= '<div class="sign-in"><p>Please sign in or'; $product .= 'make an account with us to make a purchase.</div>';
   $product .= '<div class="nonuser-button"><a class="button-link"'; 
-  $product .= 'href="index.php">Login Page</a>';
+  $product .= 'href="index.php?id='.$_GET['id'].'">Login Page</a>';
   $product .= '<div class="create-acc"><a class="button-link"';
-  $product .= 'href="create-account.php">Create Account</a></div></div>';} 
+  $product .= 'href="create-account.php?id='.$_GET['id'].'">Create Account</a></div></div>';} 
   $product .= '</div>'; 
   $product .= '</div>';  
   
   return $product;
+}
+function toCart()
+{
+  $add = '<label for="add">Added to Cart!</label>';
+  return $add;
 }
 function itemsSold()
   {
@@ -164,7 +176,6 @@ $item .= '</div>';
 return $item;
 
 }
-
 function printSideBar()
 {
 
@@ -333,5 +344,7 @@ function checkout($x){
   unset($_SESSION['product-name']);
   unset($_SESSION['price']);
   return $checkout;
-    }
+}
+    
+    
 ?>

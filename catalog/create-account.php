@@ -1,10 +1,25 @@
 <?php
- session_start();
- include_once ('includes/functions.php');
- include_once('includes/db.php');
+  session_start();
+  include_once ('includes/functions.php');
+  include_once('includes/db.php');
 
- error_reporting(-1);
- ini_set( 'display_errors', 1 );
+  $error = false;
+  if (isset($_POST['newuser'])) {
+    if (!checkDBForUserName())
+      createUser();
+    else
+      $error = true;
+  }
+
+  if (isGranted() && !isset($_POST['productID'])) 
+    header("Location: .");
+  
+  if (isGranted() && isset($_POST['productID']))
+    header("Location: product.php?id=".$_POST['productID']);
+  
+  error_reporting(-1);
+  ini_set( 'display_errors', 1 );
+
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,26 +35,17 @@
 
 <body>
   <?php
-echo navBar();
-echo '<h1>Create New User Account</h1>';
-if (empty($_POST)) 
-        echo newUser();
-      else if ($_POST['createusername'] == '' || $_POST['createpassword'] == '' || $_POST['createpassword2'] == '') 
-      echo '<p class="message">All fields are required.</p>'.newUser(); 
-    else if ($_POST['createpassword'] !== $_POST['createpassword2'])
-      echo '<p class="message">Passwords do not match.</p>'.newUser();
-    else if (checkDBForUserName()) 
-      echo '<p class="message">User already exists.</p>'.newUser();
-    else {
-      createUser();
-      echo '<p class="message">New Account Successful!</p>';
-      echo '<a style="color: hotpink;" href="index.php">Back to Login</a>';
-    }
+    echo navBar();
+    echo '<h1>Create New User Account</h1>';
+    if ($error) 
+      echo '<p class="message">User already exists.</p>';
+    echo newUser();
+
   ?>
   <div class="errorfield">
-    <p id="errorfield"></p>
-    <p id="errorfield2"></p>
-    <p id="errorfield3"></p>
+    <p id="errorfield">Please make sure both password fields are identical. </p>
+    <p id="errorfield2">Password must be at least 8 characters long. </p>
+    <p id="errorfield3">Password must include at least 1 number. </p>
   </div>
 
 </body>
